@@ -13,8 +13,12 @@ class filme extends Model
     
     protected $table = "filmes";
     
-    public function filmes(){
-        return $this->hasMany('App\Models\Filmes', 'id_filme');
+    public function ator(){
+        return $this->belongsTo('App\Models\Ator', 'id_ator');
+    
+    }
+ public function genero(){
+        return $this->belongsTo('App\Models\Genero', 'id_genero');
     
     }
 }

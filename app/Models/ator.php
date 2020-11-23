@@ -13,8 +13,8 @@ class ator extends Model
     
     protected $table = "atores";
     
-    public function autores(){
-        return $this->hasMany('App\Models\Atores', 'id_ator');
+    public function filmes(){
+        return $this->hasMany('App\Models\Filme', 'id_ator');
     
     }
 }

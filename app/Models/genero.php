@@ -13,8 +13,8 @@ class genero extends Model
     
     protected $table = "generos";
     
-    public function generos(){
-        return $this->hasMany('App\Models\Generos', 'id_genero');
+    public function filmes(){
+        return $this->hasMany('App\Models\Filme', 'id_genero');
     
     }
 }
