@@ -19,6 +19,9 @@ Route::get('/atores', 'App\Http\Controllers\AtoresController@index')
 Route::get('/atores/{id_atores}/show', 'App\Http\Controllers\AtoresController@show')
     ->name('atores.show');
 
+Route::get('/atores/create','App\Http\Controllers\AtoresController@create')
+    ->name('atores.create');
+
 Route::get('/filmes', 'App\Http\Controllers\FilmesController@index')
     ->name('filmes.index');
 

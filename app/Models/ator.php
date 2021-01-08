@@ -8,14 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class ator extends Model
 {
     use HasFactory;
-    
-    protected $primaryKey="id_ator"; 
-    
+    protected $primaryKey="id_ator";
     protected $table = "atores";
     
-    public function filmes(){
-        return $this->hasMany('App\Models\Filme', 'id_ator');
+    protected $fillable=[
+        'nome',
+        'nacionalidade',
+        'data_nascimento',
+        'fotografia',
+        'id_ator'
+    ];
     
+    public function filmes(){
+        return $this->hasMany('App\Models\Filme', 'id_ator');  
+    }
+    public function users(){
+        return $this->belongsTo('App\Models\User','id_user');
     }
 }
 ?>
