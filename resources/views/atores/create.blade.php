@@ -16,16 +16,5 @@ Fotografia: <input type="file" name="fotografia" value="{{old('fotografia')}}"><
     @if($errors->has('fotografia'))FOTOGRAFIA inválida<br><br>
     @endif
     
-
-
-
-
-
-
-
-
-
-
-
-
+<input type="submit" value="enviar">   
 </form>

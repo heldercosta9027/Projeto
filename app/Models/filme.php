@@ -15,11 +15,9 @@ class filme extends Model
     
     public function ator(){
         return $this->belongsTo('App\Models\Ator', 'id_ator');
-    
     }
  public function genero(){
         return $this->belongsTo('App\Models\Genero', 'id_genero');
-    
     }
 }
 ?>

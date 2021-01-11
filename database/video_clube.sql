@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Nov-2020 às 18:26
+-- Generation Time: 08-Jan-2021 às 18:24
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -99,6 +99,18 @@ INSERT INTO `generos` (`id_genero`, `designacao`, `observacoes`, `created_at`, `
 (2, 'Ação', 'Qualquer coisa.', NULL, NULL),
 (3, 'Ação, Aventura, Fantasia', 'Qualquer coisa.', NULL, NULL),
 (4, 'Ação', 'Qualquer coisa.', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `users`
+--
+
+CREATE TABLE `users` (
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables

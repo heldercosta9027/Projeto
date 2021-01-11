@@ -22,6 +22,21 @@ Route::get('/atores/{id_atores}/show', 'App\Http\Controllers\AtoresController@sh
 Route::get('/atores/create','App\Http\Controllers\AtoresController@create')
     ->name('atores.create');
 
+Route::post('/atores/','App\Http\Controllers\AtoresController@store')
+    ->name('atores.store');
+
+Route::get('/atores/{ida}/edit','App\Http\Controllers\AtoresController@edit')
+    ->name('atores.edit');
+
+Route::patch('/atores/{ida}/update','App\Http\Controllers\AtoresController@update')
+    ->name('atores.update');
+
+Route::get('/atores/{ida}/delete','App\Http\Controllers\AtoresController@delete')
+    ->name('atores.delete');
+
+Route::post('/atores/','App\Http\Controllers\AtoresController@destroy')
+    ->name('atores.destroy');
+
 Route::get('/filmes', 'App\Http\Controllers\FilmesController@index')
     ->name('filmes.index');
 
