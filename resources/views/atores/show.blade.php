@@ -13,3 +13,9 @@ Filmes:
 Sem ator definido
 </div>
 @endif
+<br>
+<a href="{{route('atores.edit',['id_atores'=>$ator->id_ator])}}" class="btn btn-info" role="button"> Editar Autor </a>
+<a href="{{route('atores.delete',['id_atores'=>$ator->id_ator])}}" class="btn btn-info" role="button"> Eliminar Autor </a>
+
+
+

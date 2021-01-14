@@ -19,19 +19,19 @@ Route::get('/atores', 'App\Http\Controllers\AtoresController@index')
 Route::get('/atores/{id_atores}/show', 'App\Http\Controllers\AtoresController@show')
     ->name('atores.show');
 
-Route::get('/atores/create','App\Http\Controllers\AtoresController@create')
+Route::get('/atores/{id_atores}/create','App\Http\Controllers\AtoresController@create')
     ->name('atores.create');
 
 Route::post('/atores/','App\Http\Controllers\AtoresController@store')
     ->name('atores.store');
 
-Route::get('/atores/{ida}/edit','App\Http\Controllers\AtoresController@edit')
+Route::get('/atores/{id_atores}/edit','App\Http\Controllers\AtoresController@edit')
     ->name('atores.edit');
 
-Route::patch('/atores/{ida}/update','App\Http\Controllers\AtoresController@update')
+Route::patch('/atores/{id_atores}/update','App\Http\Controllers\AtoresController@update')
     ->name('atores.update');
 
-Route::get('/atores/{ida}/delete','App\Http\Controllers\AtoresController@delete')
+Route::get('/atores/{id_atores}/delete','App\Http\Controllers\AtoresController@delete')
     ->name('atores.delete');
 
 Route::post('/atores/','App\Http\Controllers\AtoresController@destroy')

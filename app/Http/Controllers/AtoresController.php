@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Ator;
+
 
 class AtoresController extends Controller
 {
@@ -24,14 +26,12 @@ class AtoresController extends Controller
         ]);
     }
     public function create(){
-        if(Gate::allows('admin')){
             $generos = Genero::all();
-            $filmes = Autor::all();
+            $filmes = Filme::all();
         return view('atores.create',['generos'=>$generos,'filmes'=>$filmes]);
-        }
+        
     }
     public function store (Request $r){
-        if(Gate::allows('admin')){
             $novoAtor=$r->validate([
                 'nome'=>['required', 'min:3', 'max:50'],
                 'nacionalidade'=>['nullable', 'min:3','max:40'],
@@ -44,19 +44,16 @@ class AtoresController extends Controller
             return redirect()->route('atores.show',[
                 'id'=>$ator->id_ator
             ]);
-        }
     }
     public function edit(Request $r){
-        $idAtor=$request->id_ator;
-        $ator=Autor::where('id_ator',$idAtor)->with(['filme','generos'])->first();
-        if(Gate::allows('atualizar.livro',$ator)|| Gate::allows('admin')){
+        $idAtor=$r->id_ator;
+        $ator=Ator::where('id_ator',$idAtor)->with(['filme','generos'])->first();
             $filmesAtor=[];
             $generosAtor=[];
-            $filmes=Filmes::all();
-            $generos = Generos::all();
+            $filmes=Filme::all();
+            $generos=Genero::all();
         foreach($ator->atores as $ator){
             $atoresAtor[] = $ator->id_autor;
-        }
             return view('ator.edit',
                         ['filmes'=>$filmes,
                          'generos'=>$generos, 
@@ -64,10 +61,10 @@ class AtoresController extends Controller
                          'generosAtor'=>$generoAtor                       
                         ]);
         }
-        else {
+        /*else {
             return redirect()->route('atores.index')
                 ->with('msg','Não tem permissão para aceder à área pretendida.');
-        }
+        }*/
     }
     public function update (Request $request){
         $idAtor=$request->id;
@@ -94,18 +91,15 @@ class AtoresController extends Controller
     
     public function delete(request $request){
         $ator = Ator::where('id_Ator',$request->ida)->first();
-        if(Gate::allows('admin')){
             if(is_null($ator)){
                 return redirect()->route('atores.index')->with('msg','O ator não existe');
             }
             else{
                 return view ('ator.delete',['livro'=>livro]);
             }
-        }
     }
         public function destroy(Request $request){
             $ator = Ator::where('id_ator', $request->ida)->first();
-            if(Gate::allows('admin')){
                 $idAtor=$request->ida;
                 $ator=Ator::findOrFail($idAtor->atores);
                 $ator=Ator::findOrFail($idAtor->filmes);
@@ -121,7 +115,6 @@ class AtoresController extends Controller
                     $ator->delete();
                     return redirect()->route('ator.index')->with('msg','Livro eliminado!');
                 }
-            }
         }
 }
 ?>
