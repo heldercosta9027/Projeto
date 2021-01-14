@@ -9,4 +9,7 @@ Generos
     <li>{{$genero->designacao}}</li></a>
 @endforeach
 </ul>
+@if(auth()->check())
+<a href="{{route('genero.create')}}" class="btn btn-info" role="button"> Novo Genero </a>
+@endif
 @endsection

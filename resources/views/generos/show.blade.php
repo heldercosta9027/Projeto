@@ -12,4 +12,6 @@ Filmes:
 Sem filme definido
 </div>
 @endif
-
+<br>
+<a href="{{route('generos.edit',['id_genero'=>$genero->id_genero])}}" class="btn btn-info" role="button"> Editar Genero </a>
+<a href="{{route('generos.delete',['id_genero'=>$genero->id_genero])}}" class="btn btn-info" role="button"> Eliminar Genero </a>

@@ -1,4 +1,4 @@
-<form action="{{route('ator.store')}}" enctype="" method="post">
+<form action="{{route('ator.update',['id_ator'=>$ator->id_ator])}}" enctype="" method="post">
 
 Nome: <input type="text" name="nome" value="{{old('nome')}}"><br>
     @if($errors->has('nome')) NOME inválido <br><br>

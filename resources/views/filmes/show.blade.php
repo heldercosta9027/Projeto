@@ -11,3 +11,6 @@ Ator:
 Sem titulo definido
 </div>
 @endif
+<br>
+<a href="{{route('filmes.edit',['id_filme'=>$filme->id_filme])}}" class="btn btn-info" role="button"> Editar Filme </a>
+<a href="{{route('filmes.delete',['id_filme'=>$filme->id_filme])}}" class="btn btn-info" role="button"> Eliminar Filme </a>

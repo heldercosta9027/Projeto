@@ -13,6 +13,13 @@ class filme extends Model
     
     protected $table = "filmes";
     
+    protected $fillable=[
+        'titulo',
+        'sinopse',
+        'quantidade',
+        'idioma'
+    ];
+    
     public function ator(){
         return $this->belongsTo('App\Models\Ator', 'id_ator');
     }

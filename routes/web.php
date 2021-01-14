@@ -40,13 +40,52 @@ Route::post('/atores/','App\Http\Controllers\AtoresController@destroy')
 Route::get('/filmes', 'App\Http\Controllers\FilmesController@index')
     ->name('filmes.index');
 
-Route::get('/filmes/{id_filmes}/show', 'App\Http\Controllers\FilmesController@show')
+Route::get('/filmes/{id_filme}/show', 'App\Http\Controllers\FilmesController@show')
     ->name('filmes.show');
+
+Route::get('/filmes/{id_filme}/create','App\Http\Controllers\FilmesController@create')
+    ->name('filmes.create');
+
+Route::post('/filmes/','App\Http\Controllers\FilmesController@store')
+    ->name('filmes.store');
+
+Route::get('/filmes/{id_filme}/edit','App\Http\Controllers\FilmesController@edit')
+    ->name('filmes.edit');
+
+Route::patch('/filmes/{id_filme}/update','App\Http\Controllers\FilmesController@update')
+    ->name('filmes.update');
+
+Route::get('/filmes/{id_filme}/delete','App\Http\Controllers\FilmesController@delete')
+    ->name('filmes.delete');
+
+Route::post('/filmes/','App\Http\Controllers\FilmesController@destroy')
+    ->name('filmes.destroy');
 
 Route::get('/generos', 'App\Http\Controllers\GenerosController@index')
     ->name('generos.index');
 
 Route::get('/generos/{id_generos}/show', 'App\Http\Controllers\GenerosController@show')
     ->name('generos.show');
+
+Route::get('/filmes/{id_filme}/show', 'App\Http\Controllers\FilmesController@show')
+    ->name('filmes.show');
+
+Route::get('/generos/{id_genero}/create','App\Http\Controllers\GeneroController@create')
+    ->name('generos.create');
+
+Route::post('/generos/','App\Http\Controllers\GenerosController@store')
+    ->name('generos.store');
+
+Route::get('/generos/{id_genero}/edit','App\Http\Controllers\GeneroController@edit')
+    ->name('genero.edit');
+
+Route::patch('/generos/{id_genero}/update','App\Http\Controllers\GeneroController@update')
+    ->name('genero.update');
+
+Route::get('/generos/{id_genero}/delete','App\Http\Controllers\GeneroController@delete')
+    ->name('generos.delete');
+
+Route::post('/generos/','App\Http\Controllers\GeneroController@destroy')
+    ->name('generos.destroy');
 ?>
 

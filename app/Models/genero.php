@@ -13,6 +13,11 @@ class genero extends Model
     
     protected $table = "generos";
     
+    protected $fillable=[
+        'designacao',
+        'observacoes'
+    ];
+    
     public function filmes(){
         return $this->hasMany('App\Models\Filme', 'id_genero');
     

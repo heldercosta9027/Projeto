@@ -16,7 +16,7 @@ class FilmesController extends Controller
         ]);
     }
     public function show(Request $r){
-        $idfilme = $r->id_filmes;
+        $idfilme = $r->id_filme;
         
         $filme= Filme::where('id_filme',$idfilme)->with ('ator')->first();
         
@@ -29,12 +29,12 @@ class FilmesController extends Controller
         $atores = Ator::all();
         return view('atores.create',['generos'=>$generos,'atores'=>$atores]);
     }
-    public function store($request $r){
+    public function store(Request $r){
         $novoFilme=$r->validate([
-            'nome'=>['required','min:3','max=100'],
-            'nacionalidade'=>['nullable','min:3','max:20'],
-            'data_nascimento'=>['nullable','date'],
-            'fotografia'=>['nullable','min:1', 'max:255']
+            'titulo'=>['required','min:3','max=100'],
+            'sinopse'=>['nullable','min:3','max:255'],
+            'quantidade'=>['nullable','min:3', 'max:6'],
+            'idioma'=>['nullable','min:1', 'max:30']
         ]);
         $filme=Filme::create($novoFilme);
         
@@ -53,10 +53,10 @@ class FilmesController extends Controller
         $idFilme=$request->id_filme;
         $filme=Filme::where('id_filme',$idFilme)->first();
         $atualizarFilme=$request->validate([
-            'nome'=>['required','min:3','max=100'],
-            'nacionalidade'=>['nullable','min:3','max:20'],
-            'data_nascimento'=>['nullable','date'],
-            'fotografia'=>['nullable','min:1', 'max:255']
+            'titulo'=>['required','min:3','max=100'],
+            'sinopse'=>['nullable','min:3','max:255'],
+            'quantidade'=>['nullable','min:3', 'max:6'],
+            'idioma'=>['nullable','min:1', 'max:30']
         ]);
         $filme->update($atualizarFilme);
         return redirect()->route('filmes.show',[
@@ -65,7 +65,6 @@ class FilmesController extends Controller
     }
     public function delete(Request $r){
         $filme=Filme::where('id_filme',$r->id_filme)->first();
-        if(Gate::allows('admin')){
             if(is_null($filme)){
                 return redirect()->route('filme.index')
                     ->with('msg','O filme não existe');
@@ -73,7 +72,6 @@ class FilmesController extends Controller
         else
         {
             return view('filmes.delete',['filme'=>$filme]);
-        }
         }
     }
     public function destroy(Request $r){

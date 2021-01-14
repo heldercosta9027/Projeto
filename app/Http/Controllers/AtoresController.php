@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Ator;
-
+use App\Models\Filme;
+use App\Models\Genero;
 
 class AtoresController extends Controller
 {
@@ -67,7 +68,7 @@ class AtoresController extends Controller
         }*/
     }
     public function update (Request $request){
-        $idAtor=$request->id;
+        $idAtor=$request->id_ator;
         $ator=Ator::where('id_livro',$idAtor)->first();
         if(Gate::allows('admin')){
             $atualizarAtor = $request->validate([
@@ -90,12 +91,13 @@ class AtoresController extends Controller
     }
     
     public function delete(request $request){
-        $ator = Ator::where('id_Ator',$request->ida)->first();
+        $idAtor=$request->id_ator;
+        $ator = Ator::where('id_Ator',$request->id_ator)->first();
             if(is_null($ator)){
                 return redirect()->route('atores.index')->with('msg','O ator não existe');
             }
             else{
-                return view ('ator.delete',['livro'=>livro]);
+                return view ('ator.delete',['ator'=>$ator]);
             }
     }
         public function destroy(Request $request){
