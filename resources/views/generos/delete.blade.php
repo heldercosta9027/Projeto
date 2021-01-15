@@ -1,12 +1,12 @@
-<form action="{{filmes.store}}" enctype="" method="post">
-    
-Designação:<input type="text" name="designacao" value="{{old('designacao')}}"><br>
-    @if($errors->has('designacao')) Designação inválida <br><br>
-    @endif
-    
-Observações:<input type="text" name="observacoes" value="{{old('observacoes')}}"><br>
-    @if($errors->has('observacoes')) Observações inválidas <br><br>
-    @endif
-
-<input type="submit" value="enviar">   
+@section('header')
+<h1>Eliminar Genero</h1>
+    @endsection
+@section('conteudo')
+<h2>Deseja eliminar o Genero?</h2>
+<h2>{{$genero->designacao}}</h2>
+<form method="post" action="{{route('generos.destroy', ['id_genero'=>$genero->id_genero])}}">
+@csrf
+@method('delete')
+<input type="submit" value="enviar">
 </form>
+@endsection

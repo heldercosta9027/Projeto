@@ -64,28 +64,22 @@ Route::post('/filmes/','App\Http\Controllers\FilmesController@destroy')
 Route::get('/generos', 'App\Http\Controllers\GenerosController@index')
     ->name('generos.index');
 
-Route::get('/generos/{id_generos}/show', 'App\Http\Controllers\GenerosController@show')
+Route::get('/generos/{id_genero}/show', 'App\Http\Controllers\GenerosController@show')
     ->name('generos.show');
 
-Route::get('/filmes/{id_filme}/show', 'App\Http\Controllers\FilmesController@show')
-    ->name('filmes.show');
-
-Route::get('/generos/{id_genero}/create','App\Http\Controllers\GeneroController@create')
-    ->name('generos.create');
+Route::get('/generos/{id_genero}/create','App\Http\Controllers\GenerosController@create')->name('generos.create');
 
 Route::post('/generos/','App\Http\Controllers\GenerosController@store')
     ->name('generos.store');
 
-Route::get('/generos/{id_genero}/edit','App\Http\Controllers\GeneroController@edit')
-    ->name('genero.edit');
+Route::get('/generos/{id_genero}/edit','App\Http\Controllers\GenerosController@edit')
+    ->name('generos.edit');
 
-Route::patch('/generos/{id_genero}/update','App\Http\Controllers\GeneroController@update')
-    ->name('genero.update');
+Route::patch('/generos/{id_genero}/update','App\Http\Controllers\GenerosController@update')->name('generos.update');
 
-Route::get('/generos/{id_genero}/delete','App\Http\Controllers\GeneroController@delete')
-    ->name('generos.delete');
+Route::get('/generos/{id_genero}/delete','App\Http\Controllers\GenerosController@delete')->name('generos.delete');
 
-Route::post('/generos/','App\Http\Controllers\GeneroController@destroy')
+Route::post('/generos/','App\Http\Controllers\GenerosController@destroy')
     ->name('generos.destroy');
 ?>
 

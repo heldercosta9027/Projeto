@@ -1,4 +1,4 @@
-<form action="{{filmes.store}}" enctype="" method="post">
+<form action="{{route('generos.update',['id_genero'=>$genero->id_genero])}}"enctype="" method="post">
     
 Designação:<input type="text" name="designacao" value="{{old('designacao')}}"><br>
     @if($errors->has('designacao')) Designação inválida <br><br>
